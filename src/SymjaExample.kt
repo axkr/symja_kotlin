@@ -24,30 +24,32 @@ fun main(args: Array<String>?) {
         // assign a value to global ISymbol a
         result = util.evaluate(Set(a, ZZ(10)))
 // print: 10
-        System.out.println("Result: ${result}")
+        System.out.println("Result a=10: ${result}")
 
 // do a calculation with variable "a"
         result = util.evaluate(a * 3 + b)
 // print: 30+b
-        println("Result: ${result}")
+        println("Result a*3+b: ${result}")
 
 // Do a calculation in "numeric mode" with the N() function
         result = util.evaluate(N(Sinh(ZZ(5))))
 
 // print: 74.20321057778875
-        println("Result: ${result}")
+        println("Result of N(Sinh(5)): ${result}")
 
 // define a function with a recursive factorial function definition.
 // Note: fac(0) is the stop condition.
         val fac = symbol("fac")
+// fac(x_) := x * fac( x-1 )
         util.evaluate(SetDelayed(function(fac, x_), x * function(fac, x - 1)))
+// fac(0) = 1
         util.evaluate(Set(function(fac, ZZ(0)), ZZ(1)))
 
 
 // now calculate factorial of 10 with new defined function 'fac'
         result = util.evaluate(function(fac, ZZ(10)))
 // print: 3628800
-        println("Result: ${result}")
+        println("Result of fac(10): ${result}")
 
     } catch (e: SyntaxError) {
 // catch Symja parser errors here
