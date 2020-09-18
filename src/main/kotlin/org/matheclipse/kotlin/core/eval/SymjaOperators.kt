@@ -20,9 +20,10 @@ operator fun ISymbol.divAssign(other: IExpr) {  eval(binaryAST2(DivideBy, this, 
 
 operator fun ISymbol.divAssign(other: Int) {  eval(binaryAST2(DivideBy, this, ZZ(other.toLong()))) }
 
-operator fun ISymbol.modAssign(other: IExpr) {  eval(binaryAST2(Set, this, Mod(this, other))) }
+operator fun ISymbol.remAssign(other: IExpr) {  eval(binaryAST2(Set, this, Mod(this, other))) }
 
-operator fun ISymbol.modAssign(other: Int) {  eval(binaryAST2(Set, this, Mod(this, ZZ(other.toLong())))) }
+operator fun ISymbol.remAssign(other: Int) {  eval(binaryAST2(Set, this, Mod(this, ZZ(other.toLong())))) }
+
 /**
  * Enables the use of the operator [IExpr] `+ IExpr`.
  */
